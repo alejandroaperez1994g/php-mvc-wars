@@ -42,3 +42,24 @@ function getEmployee($request)
     }
     require_once VIEWS . "/employee/employee.php";
 }
+
+
+function deleteEmployee($request)
+{
+    $response = null;
+
+    if (isset($request['id'])) {
+        $id = $request['id'];
+        $response = deleteUserById($id);
+        if ($response[0]) {
+            header("Location: index.php?controller=employee&action=getAllEmployees");
+        } else {
+            error("There is a database error, try again.");
+        }
+    }
+}
+
+function openForm()
+{
+    require_once VIEWS . "/employee/employee.php";
+}

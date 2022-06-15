@@ -20,8 +20,8 @@
             echo "<p>$error</p>";
         }
         ?>
-        <form class="mb-5 needs-validation" action="index.php?controller=employee&action=<?php echo isset($employee['id']) ? "updateEmployee" : "createEmployee" ?>" method="post">
-            <input type="hidden" name="id" value="<?php echo isset($employeeData['id']) ? $employee['id'] : null ?>">
+        <form class="mb-5 needs-validation" action="index.php?controller=employee&action=<?php echo isset($employee[0]['id']) ? "updateEmployee" : "createEmployee" ?>" method="post">
+            <input type="hidden" name="id" value="<?php echo isset($employee[0]['id']) ? $employee[0]['id'] : null ?>">
             <div class="form-row">
                 <div class="col">
                     <div class="form-group">
@@ -110,12 +110,3 @@
 </body>
 
 </html>
-
-<?php
-
-echo "<pre>";
-print_r($employee);
-echo "</pre>";
-echo "Aqui";
-
-?>

@@ -13,7 +13,7 @@ function get()
         $employees = $query->fetchAll();
         return $employees;
     } catch (PDOException $e) {
-        return [];
+        return [false, $e];
     }
 }
 
@@ -29,6 +29,18 @@ function getEmployeeBD($id)
         $employee = $query->fetchAll();
         return $employee;
     } catch (PDOException $e) {
-        return [];
+        return [false, $e];
+    }
+}
+
+function deleteUserById($id)
+{
+    $query = conn()->prepare("DELETE FROM employees  WHERE id={$id};");
+
+    try {
+        $query->execute();
+        return [true];
+    } catch (PDOException $e) {
+        return [false, $e];
     }
 }
