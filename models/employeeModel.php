@@ -44,3 +44,52 @@ function deleteUserById($id)
         return [false, $e];
     }
 }
+
+function createUser($post)
+{
+    $query = conn()->prepare("INSERT INTO employees( name, last_name, email, gender_id, age, phone_number, city, street_address, state, postal_code) 
+    VALUES ( ? , ? , ? , ? , ? , ? , ? , ? , ? , ?  );");
+
+    $query->bindParam(1, $post["name"]);
+    $query->bindParam(2, $post["last_name"]);
+    $query->bindParam(3, $post["email"]);
+    $query->bindParam(4, $post["gender_id"]);
+    $query->bindParam(5, $post["age"]);
+    $query->bindParam(6, $post["phone_number"]);
+    $query->bindParam(7, $post["city"]);
+    $query->bindParam(8, $post["street_address"]);
+    $query->bindParam(9, $post["state"]);
+    $query->bindParam(10, $post["postal_code"]);
+
+    try {
+        $query->execute();
+        return [true];
+    } catch (PDOException $e) {
+        return [false, $e];
+    }
+}
+
+function updateUser($post)
+{
+    $query = conn()->prepare("UPDATE employees SET name=?, last_name=?, email=?, gender_id=?, age=?, phone_number=?,
+    city=?, street_address=?,state=?, postal_code=? WHERE id=?");
+
+    $query->bindParam(1, $post["name"]);
+    $query->bindParam(2, $post["last_name"]);
+    $query->bindParam(3, $post["email"]);
+    $query->bindParam(4, $post["gender_id"]);
+    $query->bindParam(5, $post["age"]);
+    $query->bindParam(6, $post["phone_number"]);
+    $query->bindParam(7, $post["city"]);
+    $query->bindParam(8, $post["street_address"]);
+    $query->bindParam(9, $post["state"]);
+    $query->bindParam(10, $post["postal_code"]);
+    $query->bindParam(11, $post["id"]);
+
+    try {
+        $query->execute();
+        return [true];
+    } catch (PDOException $e) {
+        return [false, $e];
+    }
+}
