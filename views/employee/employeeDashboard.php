@@ -4,50 +4,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Aliance</title>
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <script src="https://kit.fontawesome.com/24229652dd.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 </head>
 
-<body>
-    <h1>Employee Dashboard page!</h1>
+<body class="dashboard__body">
+    <h1>Aliance Army!</h1>
     <style type="text/css">
 
     </style>
-    <table class="table">
-        <thead>
-            <tr>
-                <th class="tg-0pky">ID</th>
-                <th class="tg-0pky">Name</th>
-                <th class="tg-0lax">Email</th>
-                <th class="tg-0lax">Gender</th>
-                <th class="tg-0lax">City</th>
-                <th class="tg-0lax">Age</th>
-                <th class="tg-0lax">Phone Number</th>
-                <th class="tg-0lax">Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            foreach ($employees as $index => $employee) {
-                echo "<tr>";
-                echo "<td class='tg-0lax'>" . $employee["id"] . "</td>";
-                echo "<td class='tg-0lax'>" . $employee["name"] . "</td>";
-                echo "<td class='tg-0lax'>" . $employee["email"] . "</td>";
-                echo "<td class='tg-0lax'>" . $employee["gender"] . "</td>";
-                echo "<td class='tg-0lax'>" . $employee["city"] . "</td>";
-                echo "<td class='tg-0lax'>" . $employee["age"] . "</td>";
-                echo "<td class='tg-0lax'>" . $employee["phone_number"] . "</td>";
-                echo "<td colspan='2' class='tg-0lax'>
-                <a class='btn btn-secondary' href='?controller=employee&action=getEmployee&id=" . $employee["id"] . "'>Edit</a>
-                <a class='btn btn-danger' href='?controller=employee&action=deleteEmployee&id=" . $employee["id"] . "'>Delete</a>
-                </td>";
-                echo "</tr>";
-            }
-            ?>
-        </tbody>
-    </table>
-    <a id="home" class="btn btn-primary" href="?controller=employee&action=openForm">Create</a>
-    <a id="home" class="btn btn-secondary" href="./">Back</a>
+
+
+
+    <div class="cards__container">
+        <?php
+        foreach ($employees as $index => $employee) {
+            echo "
+        <div class='card ' style='width: 18rem;'>
+        <div class='card-img-top character_pic' style='
+        background-image: url({$employee['avatar']});'></div>
+        <div class='card-body'>
+            <h5 class='card-title'>{$employee['name']}</h5>
+            <a href='?controller=employee&action=getEmployee&id=" . $employee["id"] . "' class='btn btn-primary'>Edit <i class='fa-solid fa-book-journal-whills'></i></a>
+            <a href='?controller=employee&action=deleteEmployee&id=" . $employee["id"] . "' class='btn btn-danger'>Delete <i class='fa-brands fa-galactic-republic'></i></a>
+        </div>
+    </div>
+                ";
+        }
+        ?>
+    </div>
+
+    <div class="navigation__buttons">
+        <a id="home" class="btn btn-primary" href="?controller=employee&action=openForm">Create <i class="fa-solid fa-jedi"></i></a>
+        <a id="home" class="btn btn-secondary" href="./">Back <i class="fa-brands fa-old-republic"></i></a>
+    </div>
+
+
 </body>
+
+
+
 
 </html>

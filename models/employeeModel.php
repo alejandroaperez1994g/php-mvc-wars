@@ -3,7 +3,7 @@ require_once("helper/dbConnection.php");
 
 function get()
 {
-    $query = conn()->prepare("SELECT e.id, e.name, e.email, g.name as 'gender', e.city, e.age, e.phone_number
+    $query = conn()->prepare("SELECT e.id, e.name, e.email, g.name as 'gender', e.city, e.age, e.phone_number, e.avatar
     FROM employees e
     INNER JOIN genders g ON e.gender_id = g.id
     ORDER BY e.id ASC;");
@@ -19,7 +19,7 @@ function get()
 
 function getEmployeeBD($id)
 {
-    $query = conn()->prepare("SELECT e.id, e.name, e.last_name,  e.email, g.id as 'gender', e.city, e.age, e.phone_number, e.street_address, e.state, e.postal_code
+    $query = conn()->prepare("SELECT e.id, e.name, e.last_name,  e.email, e.avatar, g.id as 'gender', e.city, e.age, e.phone_number, e.street_address, e.state, e.postal_code
     FROM employees e
     INNER JOIN genders g ON e.gender_id = g.id
     WHERE e.id={$id};");
@@ -47,7 +47,7 @@ function deleteUserById($id)
 
 function createUser($post)
 {
-    $query = conn()->prepare("INSERT INTO employees( name, last_name, email, gender_id, age, phone_number, city, street_address, state, postal_code) 
+    $query = conn()->prepare("INSERT INTO employees( name, last_name, email, gender_id, age, phone_number, avatar, street_address, state, postal_code) 
     VALUES ( ? , ? , ? , ? , ? , ? , ? , ? , ? , ?  );");
 
     $query->bindParam(1, $post["name"]);
@@ -56,7 +56,7 @@ function createUser($post)
     $query->bindParam(4, $post["gender_id"]);
     $query->bindParam(5, $post["age"]);
     $query->bindParam(6, $post["phone_number"]);
-    $query->bindParam(7, $post["city"]);
+    $query->bindParam(7, $post["avatar"]);
     $query->bindParam(8, $post["street_address"]);
     $query->bindParam(9, $post["state"]);
     $query->bindParam(10, $post["postal_code"]);
@@ -72,7 +72,7 @@ function createUser($post)
 function updateUser($post)
 {
     $query = conn()->prepare("UPDATE employees SET name=?, last_name=?, email=?, gender_id=?, age=?, phone_number=?,
-    city=?, street_address=?,state=?, postal_code=? WHERE id=?");
+    avatar=?, street_address=?,state=?, postal_code=? WHERE id=?");
 
     $query->bindParam(1, $post["name"]);
     $query->bindParam(2, $post["last_name"]);
@@ -80,7 +80,7 @@ function updateUser($post)
     $query->bindParam(4, $post["gender_id"]);
     $query->bindParam(5, $post["age"]);
     $query->bindParam(6, $post["phone_number"]);
-    $query->bindParam(7, $post["city"]);
+    $query->bindParam(7, $post["avatar"]);
     $query->bindParam(8, $post["street_address"]);
     $query->bindParam(9, $post["state"]);
     $query->bindParam(10, $post["postal_code"]);

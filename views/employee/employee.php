@@ -4,13 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Character</title>
+    <link rel="stylesheet" href="./assets/css/main.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 </head>
 
-<body>
+<body class="dashboard__body character">
     <div class="containter">
-        <h1>Employee's page!</h1>
+        <h1>Add new character!</h1>
         </br>
 
         <?php
@@ -43,7 +44,7 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1">Email address</label>
                         <input required type="email" value="<?php echo isset($employee[0]['email']) ? $employee[0]['email'] : null ?>" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter email">
-                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        <small style="color:black !important" id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                     </div>
                 </div>
                 <div class="col">
@@ -61,8 +62,8 @@
             <div class="form-row">
                 <div class="col">
                     <div class="form-group">
-                        <label for="city">City</label>
-                        <input type="text" value="<?php echo isset($employee[0]['city']) ? $employee[0]['city'] : null ?>" class="form-control" id="city" name="city" aria-describedby="CityHelp" placeholder="Enter City">
+                        <label for="city">Avatar</label>
+                        <input type="text" value="<?php echo isset($employee[0]['avatar']) ? $employee[0]['avatar'] : null ?>" class="form-control" id="city" name="avatar" aria-describedby="CityHelp" placeholder="Enter avatar URL">
                     </div>
                 </div>
                 <div class="col">
