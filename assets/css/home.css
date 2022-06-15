@@ -1,0 +1,61 @@
+.home__body {
+  display: flex;
+  height: 100vh;
+  background-image: url("../images/cloneScout.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.home__section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 4rem;
+  gap: 1rem;
+}
+
+.img__container {
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: inherit; /* blue colors for links too */
+  text-decoration: inherit; /* no underline */
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  animation: pulse-black 2s infinite;
+}
+.img__container:hover .home__title {
+  transform: scale(1.2);
+}
+
+.home__title {
+  color: white;
+  text-decoration: none;
+}
+
+.home__helmet {
+  height: 100%;
+}
+
+.home__helmet2 {
+  height: 100%;
+}
+
+@keyframes pulse-black {
+  0% {
+    transform: scale(0.95);
+    filter: drop-shadow(6px -2px 20px #000);
+  }
+
+  70% {
+    transform: scale(1);
+    filter: drop-shadow(6px -2px 25px #000);
+  }
+
+  100% {
+    transform: scale(0.95);
+    filter: drop-shadow(6px -2px 25px #000);
+  }
+}

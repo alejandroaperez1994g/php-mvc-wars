@@ -1,0 +1,46 @@
+@font-face {
+  font-family: jedi;
+  src: url("../font/starjedi/Starjedi.ttf");
+}
+
+.dashboard__body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-image: url("../images/dashboard-background.jpg");
+  background-size: cover;
+  flex-wrap: wrap;
+  font-family: "jedi";
+}
+
+.cards__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70%;
+  flex-wrap: wrap;
+  padding: 0.5rem;
+  gap: 1rem;
+  overflow-y: scroll;
+}
+
+.cards__container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.cards__container {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.character_pic {
+  height: 250px;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.character {
+  background-image: url("../images/character.jpg");
+  background-size: cover;
+}

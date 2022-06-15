@@ -1,0 +1,13 @@
+@import url("./reset.css");
+@import url("./home.css");
+@import url("./dashboard.css");
+@import url("./hobbie.css");
+
+@font-face {
+  font-family: jedi;
+  src: url("../font/starjedi/Starjedi.ttf");
+}
+
+:root {
+  font-family: "jedi";
+}
