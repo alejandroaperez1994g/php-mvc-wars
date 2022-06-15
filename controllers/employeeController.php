@@ -31,3 +31,14 @@ function error($errorMsg)
 {
     require_once VIEWS . "/error/error.php";
 }
+
+function getEmployee($request)
+{
+    $employee = null;
+
+    if (isset($request['id'])) {
+        $id = $request['id'];
+        $employee = getEmployeeBD($id);
+    }
+    require_once VIEWS . "/employee/employee.php";
+}

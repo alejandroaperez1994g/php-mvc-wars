@@ -16,3 +16,19 @@ function get()
         return [];
     }
 }
+
+function getEmployeeBD($id)
+{
+    $query = conn()->prepare("SELECT e.id, e.name, e.last_name,  e.email, g.id as 'gender', e.city, e.age, e.phone_number, e.street_address, e.state, e.postal_code
+    FROM employees e
+    INNER JOIN genders g ON e.gender_id = g.id
+    WHERE e.id={$id};");
+
+    try {
+        $query->execute();
+        $employee = $query->fetchAll();
+        return $employee;
+    } catch (PDOException $e) {
+        return [];
+    }
+}
